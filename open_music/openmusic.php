@@ -1,15 +1,6 @@
 <?php
 
-function exibeMensagemLancamento($ano) {
-        // Condicional para verificar o lançamento do álbum
-    if ($ano > 2022) {
-        echo "Esse álbum é um lançamento.\n";
-    } elseif ($ano > 2020 && $ano <= 2022) {
-        echo "Esse álbum ainda é novo.\n";
-    } else {
-        echo "Esse álbum não é um lançamento.\n";
-    }
-}
+require __DIR__ . "/funcoes.php"; //O DIR adiciona uma caminho absoluto, ou seja, informando a pasta onde está o arquivo atual.
 
 echo "Bem-vindo(a) ao OpenMusic!\n\n";
 
@@ -32,7 +23,9 @@ if ($quantidadeDeNotas > 0) {
     $nota_album = 0; // Valor padrão se não houver notas
 }
 
-$incluidoNoPlano = $planoPrime || $anoLancamento < 2020;
+
+$incluidoNoPlano = incluindoNoPlano($planoPrime, $anoLancamento);
+
 
 echo "Nome do álbum: " . $nome_album . "\n";
 if ($quantidadeDeNotas > 0) {
@@ -71,3 +64,12 @@ $album = [
 
 echo "Ano recuperado do array: " . $album["ano"] . "\n";
 
+var_dump ($notas); 
+sort ($notas);
+var_dump ($notas); 
+
+var_dump ($album ["nome"]);
+$posicaoLetraN = strpos ($album["nome"], "n");
+var_dump ($posicaoLetraN);
+
+var_dump (substr($album["nome"] , 0, $posicaoLetraN));
