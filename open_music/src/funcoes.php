@@ -14,3 +14,14 @@ function exibeMensagemLancamento(int $ano): void { //Aqui está informando o tip
 function incluindoNoPlano(bool $planoPrime, int $anoLancamento ): bool {
     return $planoPrime || $anoLancamento < 2020;
 }
+
+function criaAlbum(string $nome_album, int $anoLancamento, float $nota_album, string $genero): array
+{
+    return[ 
+        'nome' => $nome_album,
+        'ano' => $anoLancamento,
+        'nota' => $nota_album,
+        'genero' => $genero
+        
+         ];
+}

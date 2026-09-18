@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/funcoes.php"; //O DIR adiciona uma caminho absoluto, ou seja, informando a pasta onde está o arquivo atual.
+require __DIR__ . "/src/funcoes.php"; //O DIR adiciona uma caminho absoluto, ou seja, informando a pasta onde está o arquivo atual.
 
 echo "Bem-vindo(a) ao OpenMusic!\n\n";
 
@@ -55,12 +55,12 @@ $genero = match ($nome_album) {
 echo "O gênero do álbum é: $genero\n\n";
 
 // Dados do álbum organizados em um array associativo
-$album = [
-    "nome" => $nome_album,
-    "ano" => $anoLancamento,
-    "nota" => $nota_album,
-    "genero" => $genero,
-];
+$album = criaAlbum(
+    nome_album: $nome_album, 
+    anoLancamento: $anoLancamento, 
+    nota_album: $nota_album, 
+    genero: $genero 
+);
 
 echo "Ano recuperado do array: " . $album["ano"] . "\n";
 
@@ -73,3 +73,6 @@ $posicaoLetraN = strpos ($album["nome"], "n");
 var_dump ($posicaoLetraN);
 
 var_dump (substr($album["nome"] , 0, $posicaoLetraN));
+
+$albumComoStringJson = json_encode($album);
+file_put_contents(__DIR__ . '/album.json' , $albumComoStringJson);
